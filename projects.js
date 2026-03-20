@@ -25,7 +25,7 @@ const projectData = [
             { title: "Bus Tracking Web", img: "https://media.istockphoto.com/id/882362926/photo/man-using-smartphone-app-to-purchase-bus-electronic-ticket.webp?a=1&b=1&s=612x612&w=0&k=20&c=9r9pWuXs4kZCEgbt6hQWIb92zSYgvsNpwi-V_aNYIRM=", lines: ["Dynamic listing system showing real-time location and occupancy for municipal fleets."] },
             { title: "P.R.I.M.E Intelligence", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600", lines: ["Multimodal AI engagement system processing voice, text, and visual inputs."] },
             { title: "Attendance Tracking", img: "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=600", lines: ["Automated record-keeping system using biometrics to streamline attendance monitoring."] },
-            { title: "College Voice Asst", img: "ai call.jpeg", lines: ["Voice-activated support agent specifically trained for academic and campus inquiries."] },
+            { title: "College Voice Asst", img: "aicall.jpeg", lines: ["Voice-activated support agent specifically trained for academic and campus inquiries."] },
             { title: "Interactive Robot", img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600", lines: ["Hardware-based social robot that interacts with users through natural language processing."] },
             { title: "HIREMATE AI", img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600", lines: ["AI recruitment platform matching candidate skill sets with optimal job roles."] },
             { title: "Retinopathy AI", img: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600", lines: ["Deep learning model classifying fundus images to detect early stages of retinopathy."] },
