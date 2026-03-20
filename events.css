@@ -1,0 +1,255 @@
+:root {
+  --bg-dark: #1A0A0A;
+  --gold: #FFB84D;
+  --orange: #F08A24;
+  --white: #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-dark);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* --- HEADER --- */
+.main-header { padding: 15px 0; background: rgba(0,0,0,0.8); border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 2000; }
+.header-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
+.logoimg img { height: 45px;  filter: brightness(0) invert(1);}
+.clgname { font-size: clamp(0.7rem, 2vw, 1.4rem); text-transform: uppercase; flex-grow: 1; text-align: center; font-weight: 800; }
+
+.menu-trigger img { height: 30px; cursor: pointer; }
+.dropdown-menu {
+    position: absolute; display: none; right: 5%; top: 60px;
+    background: var(--orange); border-radius: 8px; list-style: none; min-width: 160px; z-index: 1000;
+}
+.dropdown-menu.show { display: block; }
+.dropdown-menu a { display: block; padding: 12px 20px; text-decoration: none; color: white; font-weight: bold; }
+
+/* --- SINGLE COLUMN LAYOUT --- */
+.page-title { margin: 40px 0; color: var(--gold); font-size: clamp(2rem, 5vw, 3.5rem); text-align: center; }
+
+.container {
+  display: flex;
+  flex-direction: column; /* Force Single Column */
+  align-items: center;
+  gap: 60px; /* Spacing between events */
+  max-width: 800px; /* Limits width on PC for readability */
+  margin: 0 auto;
+  padding: 0 20px 100px;
+}
+
+.card {
+  width: 100%;
+  height: 400px; /* Standard height to fit 2 per page on PC */
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative; width: 100%; height: 100%;
+  transition: transform 0.8s; transform-style: preserve-3d;
+}
+
+.card.flip .card-inner { transform: rotateY(180deg); }
+
+.card-front, .card-back {
+  position: absolute; width: 100%; height: 100%;
+  border-radius: 20px; backface-visibility: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 30px; border: 1px solid rgba(255, 184, 77, 0.2);
+}
+
+.card-front { background: rgba(255, 255, 255, 0.04); }
+.card-front img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }
+.card-front h2 { color: var(--gold); margin-bottom: 15px; font-size: 2rem; }
+
+.card-back {
+  transform: rotateY(180deg);
+  background: var(--orange);
+  color: white;
+  text-align: center;
+}
+
+.card-back h2 { margin-bottom: 20px; font-size: 2rem; }
+.card-back p { font-size: 1.2rem; margin: 10px 0; }
+
+/* --- BUTTONS --- */
+button {
+  padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s;
+}
+.flip-btn { background: var(--gold); color: var(--bg-dark); font-size: 1.1rem; }
+.back-btn { background: var(--white); color: var(--orange); margin-top: 25px; }
+button:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
+/* --- MOBILE RESPONSIVE (Strict 1 Column) --- */
+@media (max-width: 768px) {
+    .container { gap: 40px; }
+    .card { height: 350px; } /* Slightly shorter for mobile screens */
+    .card-front img { height: 180px; }
+    .card-front h2, .card-back h2 { font-size: 1.5rem; }
+    .card-back p { font-size: 1rem; }
+}
+
+.scroll-indicator {
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none; /* Allows clicks to pass through to elements behind it */
+}
+
+.scroll-indicator span {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #555; /* Change to match your theme */
+    text-transform: uppercase;
+    animation: nudgeText 2s ease-in-out infinite;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 60px;
+    background-color: #555;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated line effect */
+.scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #007bff; /* Highlight color */
+    animation: scrollLineMove 2s infinite;
+}
+
+/* Animations */
+@keyframes nudgeText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes scrollLineMove {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .scroll-indicator {
+        right: 10px; /* Closer to edge on mobile */
+        bottom: 30px;
+    }
+    .scroll-indicator span {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+    .scroll-line {
+        height: 40px;
+    }
+}
+
+
+/* Optimized Body Settings */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: #1A0A0A; /* Matches your --bg-dark */
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    /* This is critical: start hidden so user doesn't see 
+       the page jump behind the loader, then JS will fix it */
+    overflow-x: hidden; 
+}
+
+
+/* Preloader Container */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #1A0A0A; /* Matches your --bg-dark */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader-wrapper {
+  text-align: center;
+  position: relative;
+}
+
+/* Pulsing Logo Animation */
+.pulse-logo {
+  height: 100px; /* Adjust size as needed */
+  filter: brightness(0) invert(1); /* Keeps it white/silver like your header logo */
+  animation: logoPulse 1.5s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+/* Small Loading Bar under logo */
+.loader-bar {
+  width: 120px;
+  height: 3px;
+  background: rgba(255, 184, 77, 0.2);
+  border-radius: 10px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-bar::after {
+  content: '';
+  position: absolute;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gold);
+  animation: loadingProgress 1s infinite linear;
+}
+
+.loader-text {
+  margin-top: 15px;
+  color: var(--gold);
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 800;
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+/* Animations */
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; filter: brightness(0) invert(1) drop-shadow(0 0 10px #FFB84D); }
+}
+
+@keyframes loadingProgress {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Hiding class */
+.loader-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
