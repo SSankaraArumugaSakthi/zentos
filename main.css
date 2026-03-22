@@ -297,6 +297,36 @@ button:hover::before {
     left: 100%;
 }
 
+.price-tag {
+    /* Layout: Fits content exactly */
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 5px 10px; /* Reduced padding to fit content better */
+
+    /* Matching your button style but with tighter padding */
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--white);
+    
+    /* Border matching your code */
+    border: 2px solid var(--orange);
+    border-radius: 50px;
+    
+    /* No hover effects or transitions */
+    cursor: default;
+    pointer-events: none; /* Makes it non-interactive if desired */
+}
+
+/* Ensure no hover styles from other rules apply */
+.price-tag:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    color: var(--white) !important;
+    border-color: var(--orange) !important;
+}
+
 /* Initial state: hidden and moved down slightly */
 .info-section {
     opacity: 0;
